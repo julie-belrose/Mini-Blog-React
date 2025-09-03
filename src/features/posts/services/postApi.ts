@@ -8,6 +8,13 @@ export const api = axios.create({
     }
 });
 
-export const fetchPosts = () => api.get("/posts");
-export const fetchPostById = (id: number) => api.get(`/posts/${id}`);
-export const createPost = (data: any) => api.post("/posts", data); //TODO add good type
+export type Post = {
+    id?: number;
+    userId: number;
+    title: string;
+    body: string;
+};
+
+export const fetchPosts = () => api.get<Post[]>("/posts");
+export const fetchPostById = (id: number | string) => api.get<Post>(`/posts/${id}`);
+export const createPost = (data: Post) => api.post<Post>("/posts", data);

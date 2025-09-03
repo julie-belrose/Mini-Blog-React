@@ -13,7 +13,7 @@ function CreatePostPage() {
         setServerError("");
         try {
             if (res.status === 201 && res.data?.id) {
-                console.log("✅ Post created successfully:", res.data);
+                console.log("Post created successfully:", res.data);
                 await createPost(values);
                 navigate("/");
             }

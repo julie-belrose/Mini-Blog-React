@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../services/postApi";
 import { PostCard } from "../components/PostCard";
-
-type Post = {
-    userId: number;
-    id: number | string;
-    title: string;
-    body: string;
-};
+import type { Post } from "../services/postApi";
 
 function PostsPage() {
     const [posts, setPosts] = useState<Post[]>([]);
@@ -60,7 +54,7 @@ function PostsPage() {
                     posts.slice(i * COUNT_POSTS_PER_COLUMN, (i + 1) * COUNT_POSTS_PER_COLUMN).map((p) => (
                         <PostCard
                             key={p.id}
-                            id={p.id}
+                            id={p.id!}
                             title={p.title}
                             body={p.body}
                         />
